@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         myLibraryCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MyLibraryActivity.class);
+                Intent intent = new Intent(MainActivity.this, MyLibraryManagementActivity.class);
                 //intent.putExtra("id", "201212345");
                 //intent.putExtra("password", "password");
                 startActivity(intent);
