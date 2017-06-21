@@ -79,12 +79,12 @@
             android:layout_height="34dp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/search_text"
             android:layout_width="153dp"
             android:layout_height="66dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="검색 키워드를 입력하세요."
+            android:hint="검색 키워드를 입력하세요."
             android:layout_weight="1.08" />
 
         <Button
