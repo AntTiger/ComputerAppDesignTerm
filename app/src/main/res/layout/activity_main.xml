@@ -75,7 +75,7 @@
             android:id="@+id/spinner"
             android:entries="@array/category"
             android:layout_marginTop="20dp"
-            android:layout_width="65dp"
+            android:layout_width="wrap_content"
             android:layout_height="34dp" />
 
         <EditText
@@ -88,7 +88,7 @@
             android:layout_weight="1.08" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/book_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="검색" />

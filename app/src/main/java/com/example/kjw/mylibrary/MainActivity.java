@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button myLibraryCallButton;
+    private Button bookSearchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MyLibraryActivity.class);
+                //intent.putExtra("id", "201212345");
+                //intent.putExtra("password", "password");
+                startActivity(intent);
+            }
+        });
+
+        bookSearchButton = (Button)findViewById(R.id.book_search);
+        bookSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookSearch.class);
                 //intent.putExtra("id", "201212345");
                 //intent.putExtra("password", "password");
                 startActivity(intent);
