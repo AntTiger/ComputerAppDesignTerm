@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Mylibrary</string>
     <string name="title_activity_my_library">MyLibraryActivity</string>
+    <string name="title_activity_book_search">BookSearch</string>
 </resources>

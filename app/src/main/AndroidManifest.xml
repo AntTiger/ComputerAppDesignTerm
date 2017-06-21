@@ -19,6 +19,10 @@
         <activity
             android:name=".MyLibraryActivity"
             android:label="@string/title_activity_my_library"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BookSearch"
+            android:label="@string/title_activity_book_search"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
