@@ -1,8 +1,8 @@
+
+
 package com.example.kjw.mylibrary;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class BookSearch extends AppCompatActivity {
     private ListView m_ListView;
@@ -32,6 +33,9 @@ public class BookSearch extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent = getIntent();
+        String searchKeyword = intent.getStringExtra("search_keyword");
+
         m_Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
 
         m_ListView = (ListView) findViewById(R.id.book_list);
@@ -39,7 +43,8 @@ public class BookSearch extends AppCompatActivity {
 
         m_ListView.setOnItemClickListener(onClickListItem);
 
-       addItem();
+        m_Adapter.add(searchKeyword);
+        //addItem();
 
     }
 
@@ -52,3 +57,4 @@ public class BookSearch extends AppCompatActivity {
     }
 
 }
+
