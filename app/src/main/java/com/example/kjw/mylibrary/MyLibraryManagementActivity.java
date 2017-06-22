@@ -21,7 +21,7 @@ public class MyLibraryManagementActivity extends AppCompatActivity {
         reservationBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyLibraryManagementActivity.this, MyLibraryManagementActivity.class);
+                Intent intent = new Intent(MyLibraryManagementActivity.this, ReservationBookActivity.class);
                 //intent.putExtra("id", "201212345");
                 //intent.putExtra("password", "password");
                 startActivity(intent);
@@ -32,7 +32,7 @@ public class MyLibraryManagementActivity extends AppCompatActivity {
         reservedBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyLibraryManagementActivity.this, MyLibraryManagementActivity.class);
+                Intent intent = new Intent(MyLibraryManagementActivity.this, ReservedBookActivity.class);
                 //intent.putExtra("id", "201212345");
                 //intent.putExtra("password", "password");
                 startActivity(intent);

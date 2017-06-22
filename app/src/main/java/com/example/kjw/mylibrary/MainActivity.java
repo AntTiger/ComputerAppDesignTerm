@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, BookSearch.class);
+                keyword = (EditText)findViewById(R.id.search_text);
+                String search_keyword = keyword.getText().toString();
+                intent.putExtra("search_keyword", search_keyword);
+                //intent.putExtra("password", "password");
                 startActivity(intent);
             }
         });
@@ -45,12 +49,8 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BookSearch.class);
-                keyword = (EditText)findViewById(R.id.search_text);
-                String search_keyword = keyword.getText().toString();
-                intent.putExtra("search_keyword", search_keyword);
-                //intent.putExtra("password", "password");
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivityForResult(intent, LOGIN_ACTIVITY);
             }
 
         });
