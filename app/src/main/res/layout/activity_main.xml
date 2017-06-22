@@ -79,7 +79,7 @@
             android:layout_height="34dp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/search_text"
             android:layout_width="153dp"
             android:layout_height="66dp"
             android:ems="10"
