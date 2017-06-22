@@ -2,4 +2,7 @@
     <string name="app_name">Mylibrary</string>
     <string name="title_activity_book_search">BookSearch</string>
     <string name="title_activity_my_library_management">내 서재 관리창</string>
+    <string name="title_activity_reservation_book">대출 도서 조회창</string>
+    <string name="title_activity_reserved_book">예약 도서 조회창</string>
+    <string name="title_activity_login">로그인</string>
 </resources>

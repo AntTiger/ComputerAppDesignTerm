@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.kjw.mylibrary.MyLibraryManagementActivity">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/reserved_book_button"
             android:text="대출 도서 조회"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 도서 조회"/>
+            android:id="@+id/reservation_book_button"
+            android:text="예약 도서 조회"/>
 
     </LinearLayout>
 
