@@ -30,7 +30,7 @@ public class RentedBookActivity extends AppCompatActivity {
     private String myResult;
 
     private String mJsonString;
-    private static final String TAG = "BookSearch";
+    private static final String TAG="RentedBookActivity";
     private static final String TAG_JSON="bookInfo";
     private static final String TAG_AUTHOR= "AUTHOR";
     private static final String TAG_CALLNUMBER= "CALLNUMBER";

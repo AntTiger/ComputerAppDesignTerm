@@ -17,7 +17,7 @@ public class MyLibraryManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_library_management);
 
-        reservedBookButton = (Button)findViewById(R.id.reservation_book_button);
+        reservedBookButton = (Button)findViewById(R.id.reserved_book_button);
         reservedBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

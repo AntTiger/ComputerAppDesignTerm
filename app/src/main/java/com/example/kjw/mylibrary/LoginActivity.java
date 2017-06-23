@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
                 //TODO. ID랑 비밀번호를 받아서 서버에 요청한다.
                 String userId = idText.getText().toString();
                 String userPassword = passwordText.getText().toString();
-
             }
         });
     }
