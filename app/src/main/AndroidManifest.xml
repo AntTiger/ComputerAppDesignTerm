@@ -26,6 +26,15 @@
             android:name=".BookSearchActivity"
             android:label="@string/title_activity_book_search"
             android:theme="@style/AppTheme.NoActionBar" />
+
+            android:name=".MyLibraryManagementActivity"
+            android:label="@string/title_activity_my_library_management" />
+        <activity
+            android:name=".RentedBookActivity"
+            android:label="@string/title_activity_rented_book" />
+        <activity
+            android:name=".ReservedBookActivity"
+            android:label="@string/title_activity_reserved_book" />
         <activity
             android:name=".BookDetailActivity"
             android:label="@string/title_activity_book_detail"
