@@ -10,13 +10,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/reserved_book_button"
+            android:id="@+id/rented_book_button"
             android:text="대출 도서 조회"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/reservation_book_button"
+            android:id="@+id/reserved_book_button"
             android:text="예약 도서 조회"/>
 
     </LinearLayout>

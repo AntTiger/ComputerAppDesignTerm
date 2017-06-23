@@ -27,8 +27,8 @@
             android:name=".MyLibraryManagementActivity"
             android:label="@string/title_activity_my_library_management" />
         <activity
-            android:name=".ReservationBookActivity"
-            android:label="@string/title_activity_reservation_book" />
+            android:name=".RentedBookActivity"
+            android:label="@string/title_activity_rented_book" />
         <activity
             android:name=".ReservedBookActivity"
             android:label="@string/title_activity_reserved_book" />

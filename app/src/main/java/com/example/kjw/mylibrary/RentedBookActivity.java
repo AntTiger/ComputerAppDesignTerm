@@ -1,43 +1,29 @@
-
-
 package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class BookSearch extends AppCompatActivity {
+public class RentedBookActivity extends AppCompatActivity {
     private ListView m_ListView;
     private ArrayAdapter<String> m_Adapter;
     private String searchKeyword;
@@ -58,25 +44,13 @@ public class BookSearch extends AppCompatActivity {
     private static final String TAG_COVERURL= "COVERURL";
     ArrayList<HashMap<String, String>> mArrayList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v(TAG, "move to BookSearch success");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_search);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        mArrayList = new ArrayList<>();
-
-        m_ListView = (ListView) findViewById(R.id.book_list);
-
-        Intent intent = getIntent();
-        searchKeyword = intent.getStringExtra("search_keyword");
-
-        httpTask httptest = new httpTask();
-        httptest.execute(searchKeyword);
-
+        setContentView(R.layout.activity_rented_book);
     }
+
 
     public class httpTask extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -86,7 +60,7 @@ public class BookSearch extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(BookSearch.this, "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(RentedBookActivity.this, "Please Wait", null, true, true);
         }
 
         @Override
@@ -204,7 +178,7 @@ public class BookSearch extends AppCompatActivity {
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    BookSearch.this, mArrayList, R.layout.item_list,
+                    RentedBookActivity.this, mArrayList, R.layout.item_list,
                     new String[]{TAG_AUTHOR,TAG_TITLE, TAG_PUBLICATION},
                     new int[]{R.id.textView_list_author, R.id.textView_list_title, R.id.textView_list_publication}
             );
@@ -218,6 +192,4 @@ public class BookSearch extends AppCompatActivity {
         }
 
     }
-
 }
-
