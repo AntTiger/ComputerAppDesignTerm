@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kjw.mylibrary.BookSearchActivity">
+    tools:context="com.example.kjw.mylibrary.MyLibraryActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -16,23 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <ListView
-        android:id="@+id/book_list"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:divider="#ffcc22"
-        android:dividerHeight="1.5dp"
-        android:choiceMode="singleChoice"
-        android:layout_marginTop="57dp"
-    />
-
-    <include layout="@layout/content_book_search" />
+    <include layout="@layout/content_my_library" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -41,5 +29,10 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MyLibrary 내 서재다."/>
 
 </android.support.design.widget.CoordinatorLayout>

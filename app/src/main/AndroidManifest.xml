@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kjw.mylibrary">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,25 +19,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BookSearch"
-            android:label="@string/title_activity_book_search"
-
+            android:name=".MyLibraryActivity"
+            android:label="@string/title_activity_my_library"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyLibraryManagementActivity"
-            android:label="@string/title_activity_my_library_management" />
+            android:name=".BookSearchActivity"
+            android:label="@string/title_activity_book_search"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ReservationBookActivity"
-            android:label="@string/title_activity_reservation_book" />
-        <activity
-            android:name=".ReservedBookActivity"
-            android:label="@string/title_activity_reserved_book" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:name=".BookDetailActivity"
+            android:label="@string/title_activity_book_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
-
-
 
 </manifest>
