@@ -1,11 +1,14 @@
 package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,34 +28,39 @@ import java.util.HashMap;
 
 public class RentedBookActivity extends AppCompatActivity {
     private ListView m_ListView;
-    private ArrayAdapter<String> m_Adapter;
-    private String searchKeyword;
-    private String myResult;
+    private String userId;
+    ListAdapter adapter;
 
     private String mJsonString;
-    private static final String TAG="RentedBookActivity";
-    private static final String TAG_JSON="bookInfo";
-    private static final String TAG_AUTHOR= "AUTHOR";
-    private static final String TAG_CALLNUMBER= "CALLNUMBER";
-    private static final String TAG_DATATYPE= "DATATYPE";
-    private static final String TAG_ISBN= "ISBN";
-    private static final String TAG_KEYWORDS= "KEYWORDS";
-    private static final String TAG_MATERIALLOCATION= "MATERIALLOCATION";
-    private static final String TAG_PHYSICALDESCRIPTION= "PHYSICALDESCRIPTION";
-    private static final String TAG_TITLE= "TITLE";
-    private static final String TAG_PUBLICATION= "PUBLICATION";
-    private static final String TAG_COVERURL= "COVERURL";
+    private static final String TAG = "BookSearchActivity";
+    private static final String TAG_JSON="rentalInfo";
+    private static final String TAG_ID= "ID";
+    private static final String TAG_TITLE = "TITLE";
+    private static final String TAG_DUEDATE= "DUEDATE";
+    private static final String TAG_RETURNPLACE= "RETURNPLACE";
     ArrayList<HashMap<String, String>> mArrayList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v(TAG, "move to RentedBookActivity success");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rented_book);
+
+        mArrayList = new ArrayList<>();
+        m_ListView = (ListView) findViewById(R.id.rented_book_list);
+
+        Intent intent = getIntent();
+        //userId = intent.getStringExtra("id");
+        //test용
+        userId = "user";
+
+        HttpTask httpTest = new HttpTask();
+        httpTest.execute(userId);
+        m_ListView.setOnItemClickListener(onClickListItem);
+
     }
 
-
-    public class httpTask extends AsyncTask<String, Void, String> {
+    public class HttpTask extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
@@ -66,9 +74,7 @@ public class RentedBookActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
             progressDialog.dismiss();
-
             Log.d(TAG, "response  - " + result);
 
             if (result == null){
@@ -83,7 +89,7 @@ public class RentedBookActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/book_search.php";
+            String serverURL = "http://110.46.227.154/rented_book.php";
             //exe에 넘겨준거
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;
@@ -96,7 +102,6 @@ public class RentedBookActivity extends AppCompatActivity {
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
-
                 //php로 넘겨주는 부분
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 //입력한 데이터가 php 파일로 넘어간다.
@@ -141,7 +146,7 @@ public class RentedBookActivity extends AppCompatActivity {
         }
     }
 
-    private void showResult() {
+    private void showResult(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -150,46 +155,44 @@ public class RentedBookActivity extends AppCompatActivity {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-                String AUTHOR = item.getString(TAG_AUTHOR);
-                //String CALLNUMBER = item.getString(TAG_CALLNUMBER);
-                //String DATATYPE = item.getString(TAG_DATATYPE);
-                //String ISBN = item.getString(TAG_ISBN);
-                //String KEYWORDS = item.getString(TAG_KEYWORDS);
-                //String MATERIALLOCATION = item.getString(TAG_MATERIALLOCATION);
-                //String PHYSICALDESCRIPTION = item.getString(TAG_PHYSICALDESCRIPTION);
+                String ID = item.getString(TAG_ID);
                 String TITLE = item.getString(TAG_TITLE);
-                String PUBLICATION = item.getString(TAG_PUBLICATION);
-                //String COVERURL = item.getString(TAG_COVERURL);
+                String DUEDATE = item.getString(TAG_DUEDATE);
+                String RETURNPLACE = item.getString(TAG_RETURNPLACE);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_AUTHOR, AUTHOR);
-                //hashMap.put(TAG_CALLNUMBER, CALLNUMBER);
-                //hashMap.put(TAG_DATATYPE, DATATYPE);
-                //hashMap.put(TAG_ISBN, ISBN);
-                //hashMap.put(TAG_KEYWORDS, KEYWORDS);
-                //hashMap.put(TAG_MATERIALLOCATION, MATERIALLOCATION);
-                //hashMap.put(TAG_PHYSICALDESCRIPTION, PHYSICALDESCRIPTION);
+                hashMap.put(TAG_ID, ID);
                 hashMap.put(TAG_TITLE, TITLE);
-                hashMap.put(TAG_PUBLICATION, PUBLICATION);
-                //hashMap.put(TAG_COVERURL, COVERURL);
+                hashMap.put(TAG_DUEDATE, DUEDATE);
+                hashMap.put(TAG_RETURNPLACE, RETURNPLACE);
 
                 mArrayList.add(hashMap);
             }
 
-            ListAdapter adapter = new SimpleAdapter(
-                    RentedBookActivity.this, mArrayList, R.layout.item_list,
-                    new String[]{TAG_AUTHOR,TAG_TITLE, TAG_PUBLICATION},
-                    new int[]{R.id.textView_list_author, R.id.textView_list_title, R.id.textView_list_publication}
+            adapter = new SimpleAdapter(
+                    RentedBookActivity.this, mArrayList, R.layout.rented_book_item_list,
+                    new String[]{TAG_TITLE},
+                    new int[]{R.id.rented_book_item_list_title}
             );
-
-
             m_ListView.setAdapter(adapter);
 
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
     }
+
+    // 터치 이벤트
+    private OnItemClickListener onClickListItem = new OnItemClickListener() {
+
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            Intent intent = new Intent(RentedBookActivity.this, RentedBookDetailActivity.class);
+            intent.putExtra("title", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_TITLE));
+            intent.putExtra("dueDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_DUEDATE));
+            intent.putExtra("returnPlace", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_RETURNPLACE));
+            startActivity(intent);
+        }
+    };
 }

@@ -59,7 +59,7 @@ public class BookSearchActivity extends AppCompatActivity {
 
         mArrayList = new ArrayList<>();
 
-        m_ListView = (ListView) findViewById(R.id.book_list);
+        m_ListView = (ListView) findViewById(R.id.search_book_list);
 
         Intent intent = getIntent();
         searchKeyword = intent.getStringExtra("search_keyword");
@@ -192,9 +192,9 @@ public class BookSearchActivity extends AppCompatActivity {
             }
 
                 adapter = new SimpleAdapter(
-                    BookSearchActivity.this, mArrayList, R.layout.item_list,
+                    BookSearchActivity.this, mArrayList, R.layout.book_serach_item_list,
                     new String[]{TAG_AUTHOR,TAG_TITLE, TAG_PUBLICATION},
-                    new int[]{R.id.textView_list_author, R.id.textView_list_title, R.id.textView_list_publication}
+                    new int[]{R.id.textView_list_authors, R.id.textView_list_title, R.id.textView_list_publication}
             );
 
 

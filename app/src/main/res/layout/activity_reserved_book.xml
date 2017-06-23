@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.kjw.mylibrary.ReservedBookActivity">
 
+    <ListView
+        android:id="@+id/reserved_book_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:divider="#ffcc22"
+        android:dividerHeight="1.5dp"
+        android:choiceMode="singleChoice" />
+
 </android.support.constraint.ConstraintLayout>
