@@ -11,213 +11,256 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_book_detail" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="57dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="저자 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/AUTHOR"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
+                android:layout_height="40dp"
+                android:layout_marginTop="57dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="저자 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/AUTHOR"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="제목 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/TITLE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="청구 기호 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/CALLNUMBER"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="자료유형 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/DATATYPE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="ISBN : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/ISBN"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="키워드 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/KEYWORDS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="소장분관 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/MATERIALLOCATION"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="형태사항 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/PHYSICALDESCRIPTION"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="발행사항 : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/PUBLICATION"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="이미지 URL : "
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/COVERURL"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <Button
+                    android:id="@+id/book_reservation_button"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="160dp"
+                    android:text="도서예약"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:text="등록번호"
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="소장위치"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/holding_book_list"
+                >
+
+            </ListView>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="제목 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/TITLE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="청구 기호 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/CALLNUMBER"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="자료유형 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/DATATYPE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="ISBN : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/ISBN"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="키워드 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/KEYWORDS"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="소장분관 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/MATERIALLOCATION"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="형태사항 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/PHYSICALDESCRIPTION"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="발행사항 : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/PUBLICATION"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="이미지 URL : "
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/COVERURL"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                />
-        </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>
