@@ -29,7 +29,6 @@ import java.util.HashMap;
 
 public class ReservedBookActivity extends AppCompatActivity {
     private ListView m_ListView;
-    private Button cancelButton;
     private String userId;
     ListAdapter adapter;
 
@@ -197,6 +196,5 @@ public class ReservedBookActivity extends AppCompatActivity {
             intent.putExtra("expectedRentAvailableDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_EXPECTEDRENTAVAILABLEDATE));
             startActivity(intent);
         }
-
     };
 }

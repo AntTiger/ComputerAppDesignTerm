@@ -6,6 +6,6 @@ package com.example.kjw.mylibrary;
 
 public class PermissionData {
     public final static int notUser = 0;
-    public final static int user = 1;
-    public final static int admin = 2;
+    public final static int admin = 1;
+    public final static int user = 2;
 }
