@@ -1,21 +1,15 @@
 package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -23,7 +17,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 
 public class ReservedBookDetailActivity extends AppCompatActivity {
     private String userId;
@@ -92,8 +85,10 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
             else {
 
                 mJsonString = result;
-                showCancelDialog();
-
+                showCancelToast();
+                Intent intent = getIntent();
+                setResult(RESULT_OK, intent);
+                finish();
             }
         }
 
@@ -158,18 +153,8 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void showCancelDialog() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(ReservedBookDetailActivity.this);
-        dialog.setTitle("취소 완료");
-        dialog.setMessage("예약이 취소되었습니다.");
-        dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
-        finish();
+    private void showCancelToast() {
+        Toast toast = Toast.makeText(ReservedBookDetailActivity.this, "예약을 취소하였습니다.", Toast.LENGTH_SHORT);
+        toast.show();
     }
-
 }

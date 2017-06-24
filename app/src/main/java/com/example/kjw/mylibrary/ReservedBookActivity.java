@@ -40,6 +40,8 @@ public class ReservedBookActivity extends AppCompatActivity {
     private static final String TAG_RESERVATIONORDER= "RESERVATIONORDER";
     private static final String TAG_EXPECTEDRENTAVAILABLEDATE= "EXPECTEDRENTAVAILABLEDATE";
     private static final String TAG_ASSIGNEDNUMBER = "ASSIGNEDNUMBER";
+
+    private static final int RESERVED_BOOK_DETAIL_ACTIVITY = 0;
     ArrayList<HashMap<String, String>> mArrayList;
 
     @Override
@@ -47,6 +49,11 @@ public class ReservedBookActivity extends AppCompatActivity {
         Log.v(TAG, "move to ReservedBookActivity success");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserved_book);
+
+    }
+
+    protected void onResume() {
+        super.onResume();
         mArrayList = new ArrayList<>();
         m_ListView = (ListView) findViewById(R.id.reserved_book_list);
 
@@ -60,6 +67,7 @@ public class ReservedBookActivity extends AppCompatActivity {
         m_ListView.setOnItemClickListener(onClickListItem);
 
     }
+
 
     public class HttpTest extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -198,7 +206,16 @@ public class ReservedBookActivity extends AppCompatActivity {
             intent.putExtra("reservationOrder", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_RESERVATIONORDER));
             intent.putExtra("expectedRentAvailableDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_EXPECTEDRENTAVAILABLEDATE));
             intent.putExtra("assignedNumber", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_ASSIGNEDNUMBER));
-            startActivity(intent);
+            startActivityForResult(intent, RESERVED_BOOK_DETAIL_ACTIVITY);
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == RESERVED_BOOK_DETAIL_ACTIVITY) {
+
+            }
+        }
+    }
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class MyLibraryManagementActivity extends AppCompatActivity {
-    //TODO. intent에 권한을 넘기도록...
     private Button reservedBookButton;
     private Button rentedBookButton;
     private String userId;
