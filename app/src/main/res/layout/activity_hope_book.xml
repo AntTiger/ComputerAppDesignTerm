@@ -27,7 +27,8 @@
 
         <TextView
             android:gravity="center"
-            android:text="제목/저자" />
+            android:text="제목/저자"
+            android:layout_weight="1"/>
 
         <TextView
             android:layout_width="0dp"
