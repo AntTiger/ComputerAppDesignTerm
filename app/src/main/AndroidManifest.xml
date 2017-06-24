@@ -35,6 +35,9 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
+            android:name=".GroupstudyroomActivity"
+            android:label="그룹스터디룸 예약" />
+        <activity
             android:name=".BookDetailActivity"
             android:label="@string/title_activity_book_detail"
             android:theme="@style/AppTheme.NoActionBar" />

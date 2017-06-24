@@ -8,9 +8,11 @@
 
     <ListView
         android:id="@+id/rented_book_list"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_height="587dp"
+        android:layout_width="395dp"
         android:divider="#ffcc22"
         android:dividerHeight="1.5dp"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" />
 </android.support.constraint.ConstraintLayout>

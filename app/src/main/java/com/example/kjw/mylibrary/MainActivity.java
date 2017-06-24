@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button myLibraryCallButton;
     private Button bookSearchButton;
     private Button loginButton;
+    private Button groupstudyroomButton;
     private EditText keyword;
     private final int LOGIN_ACTIVITY = 0;
     private int permission = PermissionData.notUser;
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivityForResult(intent, LOGIN_ACTIVITY);
+            }
+        });
+
+        groupstudyroomButton = (Button)findViewById(R.id.groupstudyroom_button);
+        groupstudyroomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GroupstudyroomActivity.class);
+                startActivity(intent);
             }
         });
     }
