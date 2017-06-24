@@ -191,6 +191,7 @@ public class ReservedBookActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             Intent intent = new Intent(ReservedBookActivity.this, ReservedBookDetailActivity.class);
+            intent.putExtra("id", userId);
             intent.putExtra("title", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_TITLE));
             intent.putExtra("reservationOrder", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_RESERVATIONORDER));
             intent.putExtra("expectedRentAvailableDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_EXPECTEDRENTAVAILABLEDATE));
