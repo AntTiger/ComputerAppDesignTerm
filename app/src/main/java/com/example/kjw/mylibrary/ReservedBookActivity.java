@@ -39,6 +39,7 @@ public class ReservedBookActivity extends AppCompatActivity {
     private static final String TAG_TITLE = "TITLE";
     private static final String TAG_RESERVATIONORDER= "RESERVATIONORDER";
     private static final String TAG_EXPECTEDRENTAVAILABLEDATE= "EXPECTEDRENTAVAILABLEDATE";
+    private static final String TAG_ASSIGNEDNUMBER = "ASSIGNEDNUMBER";
     ArrayList<HashMap<String, String>> mArrayList;
 
     @Override
@@ -159,6 +160,7 @@ public class ReservedBookActivity extends AppCompatActivity {
                 String TITLE = item.getString(TAG_TITLE);
                 String RESERVATIONORDER = item.getString(TAG_RESERVATIONORDER);
                 String EXPECTEDRENTAVAILABLEDATE = item.getString(TAG_EXPECTEDRENTAVAILABLEDATE);
+                String ASSIGNEDNUMBER = item.getString(TAG_ASSIGNEDNUMBER);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
@@ -166,6 +168,7 @@ public class ReservedBookActivity extends AppCompatActivity {
                 hashMap.put(TAG_TITLE, TITLE);
                 hashMap.put(TAG_RESERVATIONORDER, RESERVATIONORDER);
                 hashMap.put(TAG_EXPECTEDRENTAVAILABLEDATE, EXPECTEDRENTAVAILABLEDATE);
+                hashMap.put(TAG_ASSIGNEDNUMBER, ASSIGNEDNUMBER);
 
                 mArrayList.add(hashMap);
             }
@@ -175,7 +178,6 @@ public class ReservedBookActivity extends AppCompatActivity {
                     new String[]{TAG_TITLE},
                     new int[]{R.id.reserved_book_item_list_title}
             );
-
 
             m_ListView.setAdapter(adapter);
 
@@ -195,6 +197,7 @@ public class ReservedBookActivity extends AppCompatActivity {
             intent.putExtra("title", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_TITLE));
             intent.putExtra("reservationOrder", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_RESERVATIONORDER));
             intent.putExtra("expectedRentAvailableDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_EXPECTEDRENTAVAILABLEDATE));
+            intent.putExtra("assignedNumber", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_ASSIGNEDNUMBER));
             startActivity(intent);
         }
     };

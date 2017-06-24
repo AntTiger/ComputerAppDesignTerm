@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 public class ReservedBookDetailActivity extends AppCompatActivity {
     private String userId;
+    private String assignedNumber;
     private String reservedBookTitle;
     private String reservedBookReservationOrder;
     private String reservedBookExpectedRentAvailableDate;
@@ -47,10 +48,10 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reserved_book_detail);
         Intent intent = getIntent();
         userId = intent.getStringExtra("id");
+        assignedNumber = intent.getStringExtra("assignedNumber");
         reservedBookTitle = intent.getStringExtra("title");
         reservedBookReservationOrder = intent.getStringExtra("reservationOrder");
         reservedBookExpectedRentAvailableDate = intent.getStringExtra("expectedRentAvailableDate");
-
         reservedBookTitleTextView = (TextView) findViewById(R.id.reserved_book_title_text_view);
         reservedBookReservationOrderTextView = (TextView) findViewById(R.id.reserved_book_reservation_order_text_view);
         reservedBookExpectedRentAvailableDateTextView = (TextView) findViewById(R.id.reserved_book_expected_rent_available_date_text_view);
@@ -64,7 +65,7 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 HttpTest httpTest = new HttpTest();
-                httpTest.execute(userId, reservedBookTitle);
+                httpTest.execute(userId, assignedNumber);
             }
         });
     }
@@ -102,8 +103,8 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
             String serverURL = "http://110.46.227.154/cancel_reservation.php";
             //exe에 넘겨준거
             String idKeyword = (String)params[0];
-            String bookTitleKeyword = (String)params[1];
-            String postParameters = "id=" + idKeyword + "&bookTitle" + bookTitleKeyword;
+            String assignedNumberKeyword = (String)params[1];
+            String postParameters = "id=" + idKeyword + "&assignedNumber=" + assignedNumberKeyword;
             try {
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -168,6 +169,7 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+        finish();
     }
 
 }
