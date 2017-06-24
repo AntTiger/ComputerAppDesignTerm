@@ -33,6 +33,7 @@ public class BookSearchActivity extends AppCompatActivity {
     private ListView m_ListView;
     private String searchKeyword;
     ListAdapter adapter;
+    private String id = "";
 
     private String mJsonString;
     private static final String TAG = "BookSearchActivity";
@@ -61,8 +62,10 @@ public class BookSearchActivity extends AppCompatActivity {
 
         m_ListView = (ListView) findViewById(R.id.search_book_list);
 
+
         Intent intent = getIntent();
         searchKeyword = intent.getStringExtra("search_keyword");
+        id = intent.getStringExtra("id");
 
         httpTask httptest = new httpTask();
         httptest.execute(searchKeyword);
@@ -224,6 +227,8 @@ public class BookSearchActivity extends AppCompatActivity {
             intent.putExtra("TITLE", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_TITLE));
             intent.putExtra("PUBLICATION", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_PUBLICATION));
             intent.putExtra("COVERURL", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_COVERURL));
+
+            intent.putExtra("id", id);
 
             startActivity(intent);
         }

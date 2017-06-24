@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 keyword = (EditText)findViewById(R.id.search_text);
                 String search_keyword = keyword.getText().toString();
                 intent.putExtra("search_keyword", search_keyword);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
