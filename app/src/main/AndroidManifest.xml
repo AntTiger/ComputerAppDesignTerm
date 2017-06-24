@@ -39,7 +39,12 @@
             android:label="@string/title_activity_book_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RentedBookDetailActivity" />
-        <activity android:name=".ReservedBookDetailActivity"></activity>
+        <activity android:name=".ReservedBookDetailActivity" />
+        <activity android:name=".HopeBookActivity" />
+        <activity
+            android:name=".hopeBookPopupActivity"
+            android:theme="@style/myPopupDialog" />
+        <activity android:name=".HopeBook_DirectActivity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button myLibraryCallButton;
     private Button bookSearchButton;
     private Button loginButton;
+    private Button hopeBookButton;
     private EditText keyword;
     private final int LOGIN_ACTIVITY = 0;
     private int permission = PermissionData.notUser;
@@ -55,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, LOGIN_ACTIVITY);
             }
         });
+
+        hopeBookButton = (Button) findViewById(R.id.mainHopeBookBt);
+        hopeBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,HopeBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
