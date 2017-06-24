@@ -50,9 +50,9 @@ public class ReservedBookActivity extends AppCompatActivity {
         m_ListView = (ListView) findViewById(R.id.reserved_book_list);
 
         Intent intent = getIntent();
-        //userId = intent.getStringExtra("id");
+        userId = intent.getStringExtra("id");
         //test용
-        userId = "user";
+        //userId = "user";
 
         HttpTest httpTest = new HttpTest();
         httpTest.execute(userId);

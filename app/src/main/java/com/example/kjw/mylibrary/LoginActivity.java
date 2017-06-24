@@ -2,6 +2,7 @@ package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String inputUserId;
     private String inputUserPassword;
-    ArrayList<HashMap<String, String>> mArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,7 +146,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //TODO. 받은 ID와 비밀번호를 이용해 로그인 시도.
     private void tryLogin(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -167,7 +166,15 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject item = jsonArray.getJSONObject(0);
                 String userId = item.getString(TAG_ID);
                 String userPassword = item.getString(TAG_PASSWORD);
-                String userPermission = item.getString(TAG_PERMISSION);
+                int userPermission = item.getInt(TAG_PERMISSION);
+                if (inputUserId.equals(userId) && inputUserPassword.equals(userPassword)) {
+                    Intent intent = getIntent();
+                    intent.putExtra("id", userId);
+                    intent.putExtra("password", userPassword);
+                    intent.putExtra("permission", userPermission);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
 
         } catch (JSONException e) {

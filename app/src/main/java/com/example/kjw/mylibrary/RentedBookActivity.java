@@ -50,9 +50,9 @@ public class RentedBookActivity extends AppCompatActivity {
         m_ListView = (ListView) findViewById(R.id.rented_book_list);
 
         Intent intent = getIntent();
-        //userId = intent.getStringExtra("id");
+        userId = intent.getStringExtra("id");
         //test용
-        userId = "user";
+        //userId = "user";
 
         HttpTask httpTest = new HttpTask();
         httpTest.execute(userId);

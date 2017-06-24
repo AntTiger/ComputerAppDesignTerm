@@ -10,20 +10,22 @@ public class MyLibraryManagementActivity extends AppCompatActivity {
     //TODO. intent에 권한을 넘기도록...
     private Button reservedBookButton;
     private Button rentedBookButton;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_library_management);
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("id");
 
         reservedBookButton = (Button)findViewById(R.id.reserved_book_button);
         reservedBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyLibraryManagementActivity.this, ReservedBookActivity.class);
-                //intent.putExtra("id", "201212345");
-                //intent.putExtra("password", "password");
+                intent.putExtra("id", userId);
                 startActivity(intent);
             }
         });
@@ -33,8 +35,7 @@ public class MyLibraryManagementActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyLibraryManagementActivity.this, RentedBookActivity.class);
-                //intent.putExtra("id", "201212345");
-                //intent.putExtra("password", "password");
+                intent.putExtra("id", userId);
                 startActivity(intent);
             }
         });
