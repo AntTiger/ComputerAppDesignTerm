@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -151,36 +152,43 @@ public class RentedBookActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            for(int i=0;i<jsonArray.length();i++){
+            if (jsonArray.length() == 0) {
+                Toast toast = Toast.makeText(RentedBookActivity.this, "대출된 도서가 없습니다.", Toast.LENGTH_SHORT);
+                toast.show();
+                finish();
+            } else {
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                String ID = item.getString(TAG_ID);
-                String TITLE = item.getString(TAG_TITLE);
-                String DUEDATE = item.getString(TAG_DUEDATE);
-                String RETURNPLACE = item.getString(TAG_RETURNPLACE);
+                    String ID = item.getString(TAG_ID);
+                    String TITLE = item.getString(TAG_TITLE);
+                    String DUEDATE = item.getString(TAG_DUEDATE);
+                    String RETURNPLACE = item.getString(TAG_RETURNPLACE);
 
-                HashMap<String,String> hashMap = new HashMap<>();
+                    HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_ID, ID);
-                hashMap.put(TAG_TITLE, TITLE);
-                hashMap.put(TAG_DUEDATE, DUEDATE);
-                hashMap.put(TAG_RETURNPLACE, RETURNPLACE);
+                    hashMap.put(TAG_ID, ID);
+                    hashMap.put(TAG_TITLE, TITLE);
+                    hashMap.put(TAG_DUEDATE, DUEDATE);
+                    hashMap.put(TAG_RETURNPLACE, RETURNPLACE);
 
-                mArrayList.add(hashMap);
+                    mArrayList.add(hashMap);
+                }
+
+                adapter = new SimpleAdapter(
+                        RentedBookActivity.this, mArrayList, R.layout.rented_book_item_list,
+                        new String[]{TAG_TITLE},
+                        new int[]{R.id.rented_book_item_list_title}
+                );
+                m_ListView.setAdapter(adapter);
             }
-
-            adapter = new SimpleAdapter(
-                    RentedBookActivity.this, mArrayList, R.layout.rented_book_item_list,
-                    new String[]{TAG_TITLE},
-                    new int[]{R.id.rented_book_item_list_title}
-            );
-            m_ListView.setAdapter(adapter);
 
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
+
     }
 
     // 터치 이벤트

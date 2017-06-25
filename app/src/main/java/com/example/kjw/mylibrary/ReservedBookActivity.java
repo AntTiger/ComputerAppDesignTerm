@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -160,34 +161,40 @@ public class ReservedBookActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            for(int i=0;i<jsonArray.length();i++){
+            if (jsonArray.length() == 0) {
+                Toast toast = Toast.makeText(ReservedBookActivity.this, "예약된 도서가 없습니다.", Toast.LENGTH_SHORT);
+                toast.show();
+                finish();
+            } else {
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                String ID = item.getString(TAG_ID);
-                String TITLE = item.getString(TAG_TITLE);
-                String RESERVATIONORDER = item.getString(TAG_RESERVATIONORDER);
-                String EXPECTEDRENTAVAILABLEDATE = item.getString(TAG_EXPECTEDRENTAVAILABLEDATE);
-                String ASSIGNEDNUMBER = item.getString(TAG_ASSIGNEDNUMBER);
+                    String ID = item.getString(TAG_ID);
+                    String TITLE = item.getString(TAG_TITLE);
+                    String RESERVATIONORDER = item.getString(TAG_RESERVATIONORDER);
+                    String EXPECTEDRENTAVAILABLEDATE = item.getString(TAG_EXPECTEDRENTAVAILABLEDATE);
+                    String ASSIGNEDNUMBER = item.getString(TAG_ASSIGNEDNUMBER);
 
-                HashMap<String,String> hashMap = new HashMap<>();
+                    HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_ID, ID);
-                hashMap.put(TAG_TITLE, TITLE);
-                hashMap.put(TAG_RESERVATIONORDER, RESERVATIONORDER);
-                hashMap.put(TAG_EXPECTEDRENTAVAILABLEDATE, EXPECTEDRENTAVAILABLEDATE);
-                hashMap.put(TAG_ASSIGNEDNUMBER, ASSIGNEDNUMBER);
+                    hashMap.put(TAG_ID, ID);
+                    hashMap.put(TAG_TITLE, TITLE);
+                    hashMap.put(TAG_RESERVATIONORDER, RESERVATIONORDER);
+                    hashMap.put(TAG_EXPECTEDRENTAVAILABLEDATE, EXPECTEDRENTAVAILABLEDATE);
+                    hashMap.put(TAG_ASSIGNEDNUMBER, ASSIGNEDNUMBER);
 
-                mArrayList.add(hashMap);
+                    mArrayList.add(hashMap);
+                }
+
+                adapter = new SimpleAdapter(
+                        ReservedBookActivity.this, mArrayList, R.layout.reserved_book_item_list,
+                        new String[]{TAG_TITLE},
+                        new int[]{R.id.reserved_book_item_list_title}
+                );
+
+                m_ListView.setAdapter(adapter);
             }
-
-            adapter = new SimpleAdapter(
-                    ReservedBookActivity.this, mArrayList, R.layout.reserved_book_item_list,
-                    new String[]{TAG_TITLE},
-                    new int[]{R.id.reserved_book_item_list_title}
-            );
-
-            m_ListView.setAdapter(adapter);
 
         } catch (JSONException e) {
 
