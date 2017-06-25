@@ -39,7 +39,7 @@ public class HopeSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("인터파크 icon_search 결과");
+        actionBar.setTitle("인터파크 검색 결과");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hope_search);
         listView = (ListView) findViewById(R.id.hopeSearchList);

@@ -48,7 +48,7 @@ public class HopeBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("icon_hopebook 신청");
+        actionBar.setTitle("희망도서 신청 목록");
         setContentView(R.layout.activity_hope_book);
         listView = (ListView)findViewById(R.id.hopebooklist);
         adapter = new HopeListAdapter();

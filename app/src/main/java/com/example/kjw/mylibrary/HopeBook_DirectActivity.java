@@ -1,6 +1,7 @@
 package com.example.kjw.mylibrary;
 
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,8 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("직접신청");
         setContentView(R.layout.activity_hope_book_direct);
 
         edit_bookname = (EditText)findViewById(R.id.directHope_bookName);
