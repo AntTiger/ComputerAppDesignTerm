@@ -157,7 +157,7 @@ public class BookDetailActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/book_search_holding.php";
+            String serverURL = "http://" + R.string.database_ip + "/book_search_holding.php";
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;
             try {
@@ -272,7 +272,7 @@ public class BookDetailActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/add_book_reservation.php";
+            String serverURL = "http://" + R.string.database_ip + "add_book_reservation.php";
             String userID = (String) params[0];
             String callnum = (String) params[1];
             String postParameters = "id=" + userID + "&assignednumber=" + callnum;

@@ -105,7 +105,8 @@ public class BookSearchActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/book_search.php";
+            String serverURL = "http://" + R.string.database_ip + "/book_search.php";
+
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;
             try {

@@ -95,7 +95,7 @@ public class ReservedBookDetailActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/cancel_reservation.php";
+            String serverURL = "http://" + R.string.database_ip + "/cancel_reservation.php";
             //exe에 넘겨준거
             String idKeyword = (String)params[0];
             String assignedNumberKeyword = (String)params[1];

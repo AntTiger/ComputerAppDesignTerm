@@ -6,4 +6,5 @@
     <string name="title_activity_reserved_book">예약 도서 조회창</string>
     <string name="title_activity_rented_book">대출 도서 조회창</string>
     <string name="title_activity_login">로그인</string>
+    <string name="database_ip">179.21.179.235</string>
 </resources>

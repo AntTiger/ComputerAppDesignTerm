@@ -89,7 +89,7 @@ public class RentedBookActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/rented_book.php";
+            String serverURL = "http://" + R.string.database_ip + "/rented_book.php";
             //exe에 넘겨준거
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;

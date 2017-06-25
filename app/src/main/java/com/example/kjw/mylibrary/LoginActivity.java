@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/login.php";
+            String serverURL = "http://" + R.string.database_ip + "/login.php";
             //exe에 넘겨준거
             String idKeyword = (String)params[0];
             String passwordKeyword = (String)params[1];
