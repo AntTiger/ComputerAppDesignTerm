@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button myLibraryCallButton;
     private Button bookSearchButton;
     private Button loginButton;
+    private Button groupstudyroomButton;
     private EditText keyword;
     private final int LOGIN_ACTIVITY = 0;
     private String id = "";
@@ -78,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        groupstudyroomButton = (Button)findViewById(R.id.groupstudyroom_button);
+        groupstudyroomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GroupstudyroomActivity.class);
+                startActivity(intent);
+            }
+        });
         setButtonStatus();
     }
 

@@ -28,11 +28,11 @@
             android:text="내 서재 관리" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/groupstudyroom_button"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_marginLeft="25dp"
-            android:text="그룹 스터디룸 조회" />
+            android:text="그룹 스터디룸 예약" />
 
     </LinearLayout>
 
