@@ -98,7 +98,7 @@ public class ReservedBookActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://" + R.string.database_ip + "/reservation_book.php";
+            String serverURL = "http://" + ServerIpData.serverIp + "/reservation_book.php";
             //exe에 넘겨준거
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;
