@@ -1,5 +1,6 @@
 package com.example.kjw.mylibrary;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
 
     Button submitBt;
     Button cancelBt;
+
+    String userID = "ID_Man";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +61,8 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
                 if(isInputEmpty){
                     Toast.makeText(HopeBook_DirectActivity.this, "필수 항목들을 모두 입력해 주세요", Toast.LENGTH_SHORT).show();
                 }else{
-                    Thread t = new Thread(new myDirectRegisterRunnable(bookName, author, publisher, publishDate, ISBN, pan, price));
-                    t.start();
+                    MyDirectRegisterTask task = new MyDirectRegisterTask(bookName, author, publisher, publishDate, ISBN, pan, price);
+                    task.execute();
                 }
             }
         });
@@ -73,7 +76,7 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
 
 
     }
-    class myDirectRegisterRunnable implements Runnable{
+    class MyDirectRegisterTask extends AsyncTask<String,Void,String>{
         String bookName;
         String author;
         String publisher;
@@ -82,7 +85,7 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
         String pan;
         String price;
 
-        public myDirectRegisterRunnable(String bookName, String author, String publisher, String publishDate, String ISBN, String pan, String price) {
+        public MyDirectRegisterTask(String bookName, String author, String publisher, String publishDate, String ISBN, String pan, String price) {
             this.bookName = bookName;
             this.author = author;
             this.publisher = publisher;
@@ -93,7 +96,7 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
         }
 
         @Override
-        public void run() {
+        protected String doInBackground(String... params) {
             HttpURLConnection conn = null;
             try {
                 URL url = new URL("http://110.46.227.154/registerHopeDirect.php"); //요청 URL을 입력
@@ -108,11 +111,12 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8")); //캐릭터셋 설정
 
                 String parameters =
-                        "bookName=" + bookName
+                                "id=" + userID
+                                +"&bookname=" + bookName
                                 +"&author=" +author
                                 +"&publisher=" +publisher
-                                +"&publishDate=" +publishDate
-                                +"&ISBN=" +ISBN
+                                +"&publishdate=" +publishDate
+                                +"&isbn=" +ISBN
                                 +"&pan=" +pan
                                 +"&price=" +price;
 
@@ -140,8 +144,7 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
                     conn.disconnect();
                 }
             }
+            return null;
         }
     }
-
-
 }
