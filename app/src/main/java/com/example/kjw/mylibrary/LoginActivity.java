@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //TODO. 받은 ID와 비밀번호를 이용해 로그인 시도.
+    //TODO. 받은 ID와 비밀번호를 이용해 icon_login 시도.
     private void tryLogin(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (jsonArray.length() == 0) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
-                dialog.setTitle("로그인 실패");
+                dialog.setTitle("icon_login 실패");
                 dialog.setMessage("일치하는 정보가 없습니다.");
                 dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override

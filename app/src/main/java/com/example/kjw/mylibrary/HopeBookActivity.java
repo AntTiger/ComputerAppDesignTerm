@@ -28,6 +28,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,11 +48,13 @@ public class HopeBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("희망도서 신청");
+        actionBar.setTitle("icon_hopebook 신청");
         setContentView(R.layout.activity_hope_book);
         listView = (ListView)findViewById(R.id.hopebooklist);
         adapter = new HopeListAdapter();
         listView.setAdapter(adapter);
+        MyGetHopeListTask task = new MyGetHopeListTask();
+        task.execute();
     }
 
     @Override
@@ -72,6 +75,11 @@ public class HopeBookActivity extends AppCompatActivity {
             case R.id.action_hopeBookRegisterIcon:
                 Intent intent = new Intent(this, hopeBookPopupActivity.class);
                 startActivityForResult(intent, FLAG_POPUP);
+                return true;
+            case R.id.action_hopeBookRefreshIcon:
+                adapter.deleteAllElements();
+                MyGetHopeListTask task = new MyGetHopeListTask();
+                task.execute();
                 return true;
             default:
         }
@@ -141,12 +149,12 @@ public class HopeBookActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             try {
 
-                URL url = new URL("http://110.46.227.154/getHopeList.php");
+                URL url = new URL("http://110.46.227.154/getHopeList.php?id="+URLEncoder.encode(new String(userID.getBytes("UTF-8"))));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
+
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -192,28 +200,23 @@ public class HopeBookActivity extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++){
 
                 JSONObject item = jsonArray.getJSONObject(i);
-                String TAG_BOOKNAME = "bookname";
-                String TAG_AUTHOR = "author";
-                String TAG_REGISTERDAY = "registerday";
-                String TAG_STATUS = "status";
 
                 String bookname = item.getString("bookname");
                 String author = item.getString("author");
-                String registerday = item.getString("registerday");
+                String registerdate = item.getString("registerdate");
                 String status = item.getString("status");
 /*
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put(TAG_BOOKNAME, bookname);
                 hashMap.put(TAG_AUTHOR, author);
-                hashMap.put(TAG_REGISTERDAY, registerday);
+                hashMap.put(TAG_REGISTERDAY, registerdate);
                 hashMap.put(TAG_STATUS,status);
 
                 mArrayList.add(hashMap);
                 */
-                adapter.addItem(registerday,bookname+" "+author,status);
+                adapter.addItem(registerdate, bookname+"|"+author, status);
             }
-
             listView.setAdapter(adapter);
 
         } catch (JSONException e) {

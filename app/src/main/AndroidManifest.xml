@@ -44,7 +44,8 @@
         <activity
             android:name=".hopeBookPopupActivity"
             android:theme="@style/myPopupDialog" />
-        <activity android:name=".HopeBook_DirectActivity"></activity>
+        <activity android:name=".HopeBook_DirectActivity" />
+        <activity android:name=".HopeSearchActivity"></activity>
     </application>
 
 </manifest>

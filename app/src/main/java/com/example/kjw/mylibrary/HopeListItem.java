@@ -5,7 +5,7 @@ package com.example.kjw.mylibrary;
  */
 
 public class HopeListItem {
-    private static int num  = 1;
+    private int num ;
     private String date;
     private String name;
     private String status;
@@ -32,7 +32,7 @@ public class HopeListItem {
         return status;
     }
 
-    public void increaseNum(){
-        num++;
+    public void setNum(int num) {
+        this.num = num;
     }
 }

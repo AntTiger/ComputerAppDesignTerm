@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    tools:context="com.example.kjw.mylibrary.hopeBookPopupActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.kjw.mylibrary.hopeBookPopupActivity">
 
         <TextView
             android:id="@+id/popUpTitle"
@@ -29,8 +29,9 @@
 
         <TextView
             android:id="@+id/popupBtDirectRegister"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:clickable="true"
             android:ems="10"
             android:gravity="center"
@@ -43,15 +44,34 @@
 
         <TextView
             android:id="@+id/popupBtSearchRegister"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:clickable="true"
             android:ems="10"
             android:gravity="center"
             android:inputType="textPersonName"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:paddingTop="0dp"
             android:text="도서 검색 후 신청하기"
             android:textSize="16dp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/hopeSearchKeyword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/hopeSearchBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_search" />
+        </LinearLayout>
 </LinearLayout>

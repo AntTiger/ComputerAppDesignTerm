@@ -40,19 +40,24 @@ public class HopeListAdapter extends BaseAdapter {
 
         TextView name = (TextView)convertView.findViewById(R.id.hopelistItem_name);
         TextView date = (TextView)convertView.findViewById(R.id.hopelistItem_date);
-        TextView num = (TextView)convertView.findViewById(R.id.hopelistItem_num);
+        TextView order = (TextView)convertView.findViewById(R.id.hopelistItem_order);
         TextView status = (TextView)convertView.findViewById(R.id.hopelistItem_status);
 
         HopeListItem item = listItemList.get(position);
+        item.setNum(position);
         name.setText(item.getName());
         date.setText(item.getDate());
-        num.setText(item.getNum());
+        order.setText(item.getNum()+"");
         status.setText(item.getStatus());
+
         return convertView;
     }
 
     public void addItem(String date, String name, String status){
         HopeListItem item = new HopeListItem(date, name, status);
         listItemList.add(item);
+    }
+    public void deleteAllElements(){
+        listItemList.clear();
     }
 }

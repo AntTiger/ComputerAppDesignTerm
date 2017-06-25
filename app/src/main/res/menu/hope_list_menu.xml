@@ -7,4 +7,11 @@
         android:title="희망도서 신청"
         app:showAsAction="always"
         />
+    <item
+        android:id="@+id/action_hopeBookRefreshIcon"
+        android:icon="@android:drawable/stat_notify_sync"
+        android:title="리스트 다시 받기"
+        app:showAsAction="always"
+        />
+
 </menu>

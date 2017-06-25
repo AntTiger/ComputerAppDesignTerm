@@ -63,6 +63,8 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
                 }else{
                     MyDirectRegisterTask task = new MyDirectRegisterTask(bookName, author, publisher, publishDate, ISBN, pan, price);
                     task.execute();
+                    Toast.makeText(HopeBook_DirectActivity.this, "신청 완료", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
@@ -111,14 +113,14 @@ public class HopeBook_DirectActivity extends AppCompatActivity {
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8")); //캐릭터셋 설정
 
                 String parameters =
-                                "id=" + userID
-                                +"&bookname=" + bookName
-                                +"&author=" +author
-                                +"&publisher=" +publisher
-                                +"&publishdate=" +publishDate
-                                +"&isbn=" +ISBN
-                                +"&pan=" +pan
-                                +"&price=" +price;
+                                "id=" + new String(userID.getBytes("UTF-8"))
+                                +"&bookname=" +  new String(bookName.getBytes("UTF-8"))
+                                +"&author=" + new String(author.getBytes("UTF-8"))
+                                +"&publisher=" + new String(publisher.getBytes("UTF-8"))
+                                +"&publishdate=" + new String(publishDate.getBytes("UTF-8"))
+                                +"&isbn=" + new String(ISBN.getBytes("UTF-8"))
+                                +"&pan=" + new String(pan.getBytes("UTF-8"))
+                                +"&price=" + new String(price.getBytes("UTF-8"));
 
                 writer.write(parameters); //요청 파라미터를 입력
                 writer.flush();
