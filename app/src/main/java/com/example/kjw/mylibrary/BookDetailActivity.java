@@ -2,11 +2,13 @@ package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -65,6 +67,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "BookDetailActivity";
     private static final String TAG_JSON="bookhoindinginfo";
+    private static final String TAG_JSON2="query_result";
     private static final String TAG_ASSIGNEDNUMBER= "ASSIGNEDNUMBER";
     private static final String TAG_POSSESSIONALCATION= "POSSESSIONALCATION";
     private static final String TAG_RESERVATIONRESULT= "result";
@@ -73,7 +76,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
     ArrayList<myItems> items;
 
-    private boolean reservationResult = false;
+    private int reservationResult = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,7 +275,7 @@ public class BookDetailActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://" + ServerIpData.serverIp + "add_book_reservation.php";
+            String serverURL = "http://" + ServerIpData.serverIp + "/add_book_reservation.php";
             String userID = (String) params[0];
             String callnum = (String) params[1];
             String postParameters = "id=" + userID + "&assignednumber=" + callnum;
@@ -330,11 +333,11 @@ public class BookDetailActivity extends AppCompatActivity {
     private void showResultReservation() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
-            JSONObject item = jsonArray.getJSONObject(0);
-            reservationResult = item.getBoolean(TAG_RESERVATIONRESULT);
-
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
+            for(int i=0;i<jsonArray.length();i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                reservationResult = item.getInt(TAG_RESERVATIONRESULT);
+            }
 
         } catch (JSONException e) {
 
@@ -389,14 +392,15 @@ public class BookDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     httpTask2 httptest = new httpTask2();
                     httptest.execute(id, arSrc.get(pos).ASSIGNEDNUMBER);
-                    if ( reservationResult) {
-                        Toast toast = Toast.makeText(BookDetailActivity.this, "예약 성공", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                    else{
+                    if ( reservationResult == 0) {
                         Toast toast = Toast.makeText(BookDetailActivity.this, "예약 실패", Toast.LENGTH_SHORT);
                         toast.show();
                     }
+                    else {
+                        Toast toast = Toast.makeText(BookDetailActivity.this, "예약 성공", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
                 }
             });
 

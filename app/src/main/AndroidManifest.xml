@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,25 +23,37 @@
         <activity
             android:name=".BookSearchActivity"
             android:label="@string/title_activity_book_search"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MyLibraryManagementActivity"
-            android:label="@string/title_activity_my_library_management" />
+            android:label="@string/title_activity_my_library_management"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RentedBookActivity"
-            android:label="@string/title_activity_rented_book" />
+            android:label="@string/title_activity_rented_book"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ReservedBookActivity"
-            android:label="@string/title_activity_reserved_book" />
+            android:label="@string/title_activity_reserved_book"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BookDetailActivity"
             android:label="@string/title_activity_book_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RentedBookDetailActivity" />
-        <activity android:name=".ReservedBookDetailActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RentedBookDetailActivity"
+            android:label="@string/title_activity_rented_book_detail"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ReservedBookDetailActivity"
+            android:label="@string/title_activity_reserved_book_detail"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
