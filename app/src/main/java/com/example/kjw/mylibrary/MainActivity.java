@@ -14,6 +14,7 @@ import java.lang.String;
 
 public class MainActivity extends AppCompatActivity {
     private Button myLibraryCallButton;
+    private Button bookManagementCallButton;
     private Button bookSearchButton;
     private Button loginButton;
     private Button groupstudyroomButton;
@@ -35,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MyLibraryManagementActivity.class);
                 intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+
+        bookManagementCallButton = (Button)findViewById(R.id.book_management_button);
+        bookManagementCallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookManagementActivity.class);
                 startActivity(intent);
             }
         });
@@ -106,21 +116,25 @@ public class MainActivity extends AppCompatActivity {
         switch (permission) {
             case PermissionData.notUser:
                 myLibraryCallButton.setEnabled(false);
+                bookManagementCallButton.setEnabled(false);
                 bookSearchButton.setEnabled(true);
                 loginButton.setEnabled(true);
                 break;
             case PermissionData.user:
                 myLibraryCallButton.setEnabled(true);
+                bookManagementCallButton.setEnabled(false);
                 bookSearchButton.setEnabled(true);
                 loginButton.setEnabled(true);
                 break;
             case PermissionData.admin:
                 myLibraryCallButton.setEnabled(true);
+                bookManagementCallButton.setEnabled(true);
                 bookSearchButton.setEnabled(true);
                 loginButton.setEnabled(true);
                 break;
             default:
                 myLibraryCallButton.setEnabled(false);
+                bookManagementCallButton.setEnabled(false);
                 bookSearchButton.setEnabled(true);
                 loginButton.setEnabled(true);
         }

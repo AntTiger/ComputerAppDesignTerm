@@ -30,6 +30,10 @@
             android:label="@string/title_activity_my_library_management"
             android:screenOrientation="portrait"/>
         <activity
+        android:name=".BookManagementActivity"
+        android:label="도서 관리"
+        android:screenOrientation="portrait"/>
+        <activity
             android:name=".RentedBookActivity"
             android:label="@string/title_activity_rented_book"
             android:screenOrientation="portrait"/>
