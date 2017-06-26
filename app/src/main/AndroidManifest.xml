@@ -53,6 +53,12 @@
             android:name=".BookDetailActivity"
             android:label="@string/title_activity_book_detail"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HopeBookActivity" />
+        <activity
+            android:name=".hopeBookPopupActivity"
+            android:theme="@style/myPopupDialog" />
+        <activity android:name=".HopeBook_DirectActivity" />
+        <activity android:name=".HopeSearchActivity"></activity>
         <activity
             android:name=".ReservedGsrActivity"
             android:label="그룹스터디룸 예약"

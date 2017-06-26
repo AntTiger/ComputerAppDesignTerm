@@ -10,13 +10,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.lang.String;
 
 public class MainActivity extends AppCompatActivity {
-    private Button myLibraryCallButton;
     private Button bookManagementCallButton;
-    private Button bookSearchButton;
-    private Button loginButton;
+    private ImageView myLibraryCallButton;
+    private ImageView bookSearchButton;
+    private ImageView loginButton;
+    private ImageView hopeBookButton;
+
+    private TextView loginButtonText;
+
     private Button groupstudyroomButton;
     private EditText keyword;
     private final int LOGIN_ACTIVITY = 0;
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.v("main", "start");
 
-        myLibraryCallButton = (Button)findViewById(R.id.my_library_management_button);
+        myLibraryCallButton = (ImageView)findViewById(R.id.my_library_management_button);
         myLibraryCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bookSearchButton = (Button)findViewById(R.id.book_search);
+        bookSearchButton = (ImageView)findViewById(R.id.book_search);
         bookSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,11 +71,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        loginButton = (Button)findViewById(R.id.login_confirm_button);
+        loginButtonText = (TextView)findViewById(R.id.login_confirm_button_text);
+
+        loginButton = (ImageView)findViewById(R.id.login_confirm_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (loginButton.getText().toString().equals("로그인")) {
+                if (loginButtonText.getText().toString().equals("로그인")) {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivityForResult(intent, LOGIN_ACTIVITY);
                 } else {
@@ -88,6 +99,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        hopeBookButton = (ImageView) findViewById(R.id.mainHopeBookBt);
+        hopeBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,HopeBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         groupstudyroomButton = (Button)findViewById(R.id.groupstudyroom_button);
         groupstudyroomButton.setOnClickListener(new View.OnClickListener() {
@@ -141,13 +162,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void toggleLoginButton() {
-        loginButton = (Button)findViewById(R.id.login_confirm_button);
-        switch (loginButton.getText().toString()) {
+        loginButtonText = (TextView)findViewById(R.id.login_confirm_button_text);
+        switch (loginButtonText.getText().toString()) {
             case "로그인":
-                loginButton.setText("로그아웃");
+                loginButtonText.setText("로그아웃");
                 break;
             case "로그아웃":
-                loginButton.setText("로그인");
+                loginButtonText.setText("로그인");
                 break;
             default:
                 break;
