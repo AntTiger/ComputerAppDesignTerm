@@ -215,7 +215,8 @@ public class HopeSearchActivity extends AppCompatActivity {
 
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                conn.setConnectTimeout(60);
+                conn.setReadTimeout(5000);
+                conn.setConnectTimeout(5000);
 
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8")); //캐릭터셋 설정
