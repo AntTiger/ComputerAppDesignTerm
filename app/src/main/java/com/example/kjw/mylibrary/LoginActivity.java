@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (jsonArray.length() == 0) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
-                dialog.setTitle("로그인 실패");
+                dialog.setTitle("icon_login 실패");
                 dialog.setMessage("일치하는 정보가 없습니다.");
                 dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override

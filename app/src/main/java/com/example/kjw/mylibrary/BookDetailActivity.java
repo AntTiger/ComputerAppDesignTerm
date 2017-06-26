@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -37,6 +38,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.Semaphore;
 
 public class BookDetailActivity extends AppCompatActivity {
     private String AUTHOR;
@@ -269,6 +271,16 @@ public class BookDetailActivity extends AppCompatActivity {
 
                 mJsonString = result;
                 showResultReservation();
+
+                if ( reservationResult == 0) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "예약 실패", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "예약 성공", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         }
 
@@ -328,6 +340,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
         }
 
+
     }
 
     private void showResultReservation() {
@@ -340,9 +353,9 @@ public class BookDetailActivity extends AppCompatActivity {
             }
 
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
+
     }
 
     private class CustomAdapter extends BaseAdapter {
@@ -392,15 +405,6 @@ public class BookDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     httpTask2 httptest = new httpTask2();
                     httptest.execute(id, arSrc.get(pos).ASSIGNEDNUMBER);
-                    if ( reservationResult == 0) {
-                        Toast toast = Toast.makeText(BookDetailActivity.this, "예약 실패", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                    else {
-                        Toast toast = Toast.makeText(BookDetailActivity.this, "예약 성공", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-
                 }
             });
 
