@@ -168,6 +168,7 @@
                 android:text="로그인" />
 
             <TextView
+                android:id="@+id/login_confirm_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
