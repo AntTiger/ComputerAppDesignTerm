@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kjw.mylibrary.ReservedGsrActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/date1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="MM-DD"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/date2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="MM-DD"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/date3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="MM-DD"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radiodate1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+
+            <RadioButton
+                android:id="@+id/radiodate2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radiodate3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="16dp"
+        android:text="시\n간"
+        android:textSize="20sp" />
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="75dp"
+            android:id="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="9"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="11"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="13"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="14"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="16"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="17"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="18"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radiotime9"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:id="@+id/radiotime10"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime11"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime12"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime13"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime14"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime15"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime16"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime17"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/radiotime18"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="146dp"
+            android:layout_marginLeft="16dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid1"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid1_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid2"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid2_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid3"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid3_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid4"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid4_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid5"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid5_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sid6"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID를 입력하세요"
+                    android:maxLength="12"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/check_sid6_button"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:text="확인"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/reserve_gsr_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="402dp"/>
+
+</RelativeLayout>

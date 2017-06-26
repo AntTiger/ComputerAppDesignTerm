@@ -2,6 +2,7 @@ package com.example.kjw.mylibrary;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +22,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText idText;
@@ -38,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String inputUserId;
     private String inputUserPassword;
-    ArrayList<HashMap<String, String>> mArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/login.php";
+            String serverURL = "http://" + ServerIpData.serverIp + "/login.php";
             //exe에 넘겨준거
             String idKeyword = (String)params[0];
             String passwordKeyword = (String)params[1];
@@ -108,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -146,7 +143,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //TODO. 받은 ID와 비밀번호를 이용해 icon_login 시도.
     private void tryLogin(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -167,7 +163,15 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject item = jsonArray.getJSONObject(0);
                 String userId = item.getString(TAG_ID);
                 String userPassword = item.getString(TAG_PASSWORD);
-                String userPermission = item.getString(TAG_PERMISSION);
+                int userPermission = item.getInt(TAG_PERMISSION);
+                if (inputUserId.equals(userId) && inputUserPassword.equals(userPassword)) {
+                    Intent intent = getIntent();
+                    intent.putExtra("id", userId);
+                    intent.putExtra("password", userPassword);
+                    intent.putExtra("permission", userPermission);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
 
         } catch (JSONException e) {

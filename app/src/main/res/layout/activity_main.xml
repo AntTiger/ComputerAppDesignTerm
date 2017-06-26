@@ -87,6 +87,14 @@
                 android:textSize="14dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/groupstudyroom_button"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:text="그룹 스터디룸 예약" />
+
     </LinearLayout>
 
     <LinearLayout

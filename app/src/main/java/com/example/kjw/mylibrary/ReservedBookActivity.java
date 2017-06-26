@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +40,9 @@ public class ReservedBookActivity extends AppCompatActivity {
     private static final String TAG_TITLE = "TITLE";
     private static final String TAG_RESERVATIONORDER= "RESERVATIONORDER";
     private static final String TAG_EXPECTEDRENTAVAILABLEDATE= "EXPECTEDRENTAVAILABLEDATE";
+    private static final String TAG_ASSIGNEDNUMBER = "ASSIGNEDNUMBER";
+
+    private static final int RESERVED_BOOK_DETAIL_ACTIVITY = 0;
     ArrayList<HashMap<String, String>> mArrayList;
 
     @Override
@@ -46,19 +50,25 @@ public class ReservedBookActivity extends AppCompatActivity {
         Log.v(TAG, "move to ReservedBookActivity success");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserved_book);
+
+    }
+
+    protected void onResume() {
+        super.onResume();
         mArrayList = new ArrayList<>();
         m_ListView = (ListView) findViewById(R.id.reserved_book_list);
 
         Intent intent = getIntent();
-        //userId = intent.getStringExtra("id");
+        userId = intent.getStringExtra("id");
         //test용
-        userId = "user";
+        //userId = "user";
 
         HttpTest httpTest = new HttpTest();
         httpTest.execute(userId);
         m_ListView.setOnItemClickListener(onClickListItem);
 
     }
+
 
     public class HttpTest extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -89,7 +99,7 @@ public class ReservedBookActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "start doInBackground");
-            String serverURL = "http://110.46.227.154/reservation_book.php";
+            String serverURL = "http://" + ServerIpData.serverIp + "/reservation_book.php";
             //exe에 넘겨준거
             String keyword = (String)params[0];
             String postParameters = "keyword=" + keyword;
@@ -151,33 +161,40 @@ public class ReservedBookActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            for(int i=0;i<jsonArray.length();i++){
+            if (jsonArray.length() == 0) {
+                Toast toast = Toast.makeText(ReservedBookActivity.this, "예약된 도서가 없습니다.", Toast.LENGTH_SHORT);
+                toast.show();
+                finish();
+            } else {
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                String ID = item.getString(TAG_ID);
-                String TITLE = item.getString(TAG_TITLE);
-                String RESERVATIONORDER = item.getString(TAG_RESERVATIONORDER);
-                String EXPECTEDRENTAVAILABLEDATE = item.getString(TAG_EXPECTEDRENTAVAILABLEDATE);
+                    String ID = item.getString(TAG_ID);
+                    String TITLE = item.getString(TAG_TITLE);
+                    String RESERVATIONORDER = item.getString(TAG_RESERVATIONORDER);
+                    String EXPECTEDRENTAVAILABLEDATE = item.getString(TAG_EXPECTEDRENTAVAILABLEDATE);
+                    String ASSIGNEDNUMBER = item.getString(TAG_ASSIGNEDNUMBER);
 
-                HashMap<String,String> hashMap = new HashMap<>();
+                    HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_ID, ID);
-                hashMap.put(TAG_TITLE, TITLE);
-                hashMap.put(TAG_RESERVATIONORDER, RESERVATIONORDER);
-                hashMap.put(TAG_EXPECTEDRENTAVAILABLEDATE, EXPECTEDRENTAVAILABLEDATE);
+                    hashMap.put(TAG_ID, ID);
+                    hashMap.put(TAG_TITLE, TITLE);
+                    hashMap.put(TAG_RESERVATIONORDER, RESERVATIONORDER);
+                    hashMap.put(TAG_EXPECTEDRENTAVAILABLEDATE, EXPECTEDRENTAVAILABLEDATE);
+                    hashMap.put(TAG_ASSIGNEDNUMBER, ASSIGNEDNUMBER);
 
-                mArrayList.add(hashMap);
+                    mArrayList.add(hashMap);
+                }
+
+                adapter = new SimpleAdapter(
+                        ReservedBookActivity.this, mArrayList, R.layout.reserved_book_item_list,
+                        new String[]{TAG_TITLE},
+                        new int[]{R.id.reserved_book_item_list_title}
+                );
+
+                m_ListView.setAdapter(adapter);
             }
-
-            adapter = new SimpleAdapter(
-                    ReservedBookActivity.this, mArrayList, R.layout.reserved_book_item_list,
-                    new String[]{TAG_TITLE},
-                    new int[]{R.id.reserved_book_item_list_title}
-            );
-
-
-            m_ListView.setAdapter(adapter);
 
         } catch (JSONException e) {
 
@@ -191,10 +208,21 @@ public class ReservedBookActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             Intent intent = new Intent(ReservedBookActivity.this, ReservedBookDetailActivity.class);
+            intent.putExtra("id", userId);
             intent.putExtra("title", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_TITLE));
             intent.putExtra("reservationOrder", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_RESERVATIONORDER));
             intent.putExtra("expectedRentAvailableDate", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_EXPECTEDRENTAVAILABLEDATE));
-            startActivity(intent);
+            intent.putExtra("assignedNumber", ((HashMap<String,String>)adapter.getItem(arg2)).get(TAG_ASSIGNEDNUMBER));
+            startActivityForResult(intent, RESERVED_BOOK_DETAIL_ACTIVITY);
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == RESERVED_BOOK_DETAIL_ACTIVITY) {
+
+            }
+        }
+    }
 }
