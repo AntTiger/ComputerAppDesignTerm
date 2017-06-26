@@ -17,12 +17,15 @@ import android.widget.Toast;
 public class hopeBookPopupActivity extends AppCompatActivity {
     EditText editText;
     ImageView imageView;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND, WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
         setContentView(R.layout.activity_hope_book_popup);
 
         TextView directText = (TextView) findViewById(R.id.popupBtDirectRegister);
@@ -48,6 +51,7 @@ public class hopeBookPopupActivity extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(hopeBookPopupActivity.this,HopeSearchActivity.class);
                     intent.putExtra("keyword",editText.getText().toString());
+                    intent.putExtra("id",id);
                     startActivity(intent);
                 }
             }

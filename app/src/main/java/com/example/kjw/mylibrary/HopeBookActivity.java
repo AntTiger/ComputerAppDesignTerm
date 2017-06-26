@@ -36,7 +36,7 @@ public class HopeBookActivity extends AppCompatActivity {
 
     final int FLAG_POPUP = 51;
     final int FLAG_DIRECT = 52;
-    String userID = "ID_Man";
+    String userID = "";
     ListView listView;
     HopeListAdapter adapter;
 
@@ -47,6 +47,8 @@ public class HopeBookActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("id");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("희망도서 신청 목록");
         setContentView(R.layout.activity_hope_book);
@@ -74,6 +76,7 @@ public class HopeBookActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_hopeBookRegisterIcon:
                 Intent intent = new Intent(this, hopeBookPopupActivity.class);
+                intent.putExtra("id", userID);
                 startActivityForResult(intent, FLAG_POPUP);
                 return true;
             case R.id.action_hopeBookRefreshIcon:
@@ -95,6 +98,7 @@ public class HopeBookActivity extends AppCompatActivity {
                 if (result.equals("direct")) {
                     Toast.makeText(this, "직접신청 선택", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, HopeBook_DirectActivity.class);
+                    intent.putExtra("id", userID);
                     startActivityForResult(intent, FLAG_DIRECT);
                 } else if (result.equals("search")) {
                     Toast.makeText(this, "검색후 신청 선택", Toast.LENGTH_SHORT).show();
