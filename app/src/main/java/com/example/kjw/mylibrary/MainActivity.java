@@ -3,6 +3,8 @@ package com.example.kjw.mylibrary;
 import android.content.DialogInterface;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -137,27 +139,56 @@ public class MainActivity extends AppCompatActivity {
         switch (permission) {
             case PermissionData.notUser:
                 myLibraryCallButton.setEnabled(false);
+                setButtonImageStatus(myLibraryCallButton, false);
+
                 bookManagementCallButton.setEnabled(false);
+                setButtonImageStatus(bookManagementCallButton, false);
+
                 bookSearchButton.setEnabled(true);
+                setButtonImageStatus(bookSearchButton, true);
+
                 loginButton.setEnabled(true);
+                setButtonImageStatus(loginButton, true);
                 break;
             case PermissionData.user:
                 myLibraryCallButton.setEnabled(true);
+                setButtonImageStatus(myLibraryCallButton, true);
+
                 bookManagementCallButton.setEnabled(false);
+                setButtonImageStatus(bookManagementCallButton, false);
+
                 bookSearchButton.setEnabled(true);
+                setButtonImageStatus(bookSearchButton, true);
+
                 loginButton.setEnabled(true);
+                setButtonImageStatus(loginButton, true);
+
                 break;
             case PermissionData.admin:
                 myLibraryCallButton.setEnabled(true);
+                setButtonImageStatus(myLibraryCallButton, true);
+
                 bookManagementCallButton.setEnabled(true);
+                setButtonImageStatus(bookManagementCallButton, false);
+
                 bookSearchButton.setEnabled(true);
+                setButtonImageStatus(bookSearchButton, true);
+
                 loginButton.setEnabled(true);
+                setButtonImageStatus(loginButton, true);
                 break;
             default:
                 myLibraryCallButton.setEnabled(false);
+                setButtonImageStatus(myLibraryCallButton, false);
+
                 bookManagementCallButton.setEnabled(false);
+                setButtonImageStatus(bookManagementCallButton, false);
+
                 bookSearchButton.setEnabled(true);
+                setButtonImageStatus(bookSearchButton, true);
+
                 loginButton.setEnabled(true);
+                setButtonImageStatus(loginButton, true);
         }
     }
 
@@ -172,6 +203,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void setButtonImageStatus(ImageView buttonImage, boolean isEnable) {
+        if (isEnable) {
+            buttonImage.getDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.MULTIPLY);
+        } else {
+            buttonImage.getDrawable().clearColorFilter();
         }
     }
 }
