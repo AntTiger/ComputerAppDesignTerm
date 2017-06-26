@@ -160,6 +160,15 @@ public class MainActivity extends AppCompatActivity {
 
                 loginButton.setEnabled(true);
                 setButtonImageStatus(loginButton, true);
+
+                groupstudyroomButton.setEnabled(true);
+                setButtonImageStatus(groupstudyroomButton, true);
+
+                studyroomButton.setEnabled(true);
+                setButtonImageStatus(studyroomButton, true);
+
+                hopeBookButton.setEnabled(false);
+                setButtonImageStatus(hopeBookButton, false);
                 break;
             case PermissionData.user:
                 myLibraryCallButton.setEnabled(true);
@@ -174,19 +183,36 @@ public class MainActivity extends AppCompatActivity {
                 loginButton.setEnabled(true);
                 setButtonImageStatus(loginButton, true);
 
+                groupstudyroomButton.setEnabled(true);
+                setButtonImageStatus(groupstudyroomButton, true);
+
+                studyroomButton.setEnabled(true);
+                setButtonImageStatus(studyroomButton, true);
+
+                hopeBookButton.setEnabled(true);
+                setButtonImageStatus(hopeBookButton, true);
                 break;
             case PermissionData.admin:
                 myLibraryCallButton.setEnabled(true);
                 setButtonImageStatus(myLibraryCallButton, true);
 
                 bookManagementCallButton.setEnabled(true);
-                setButtonImageStatus(bookManagementCallButton, false);
+                setButtonImageStatus(bookManagementCallButton, true);
 
                 bookSearchButton.setEnabled(true);
                 setButtonImageStatus(bookSearchButton, true);
 
                 loginButton.setEnabled(true);
                 setButtonImageStatus(loginButton, true);
+
+                groupstudyroomButton.setEnabled(true);
+                setButtonImageStatus(groupstudyroomButton, true);
+
+                studyroomButton.setEnabled(true);
+                setButtonImageStatus(studyroomButton, true);
+
+                hopeBookButton.setEnabled(true);
+                setButtonImageStatus(hopeBookButton, true);
                 break;
             default:
                 myLibraryCallButton.setEnabled(false);
@@ -200,6 +226,15 @@ public class MainActivity extends AppCompatActivity {
 
                 loginButton.setEnabled(true);
                 setButtonImageStatus(loginButton, true);
+
+                groupstudyroomButton.setEnabled(true);
+                setButtonImageStatus(groupstudyroomButton, true);
+
+                studyroomButton.setEnabled(true);
+                setButtonImageStatus(studyroomButton, true);
+
+                hopeBookButton.setEnabled(false);
+                setButtonImageStatus(hopeBookButton, false);
         }
     }
 
