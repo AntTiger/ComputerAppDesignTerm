@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView loginButtonText;
 
-    private Button groupstudyroomButton;
+    private ImageView groupstudyroomButton;
     private EditText keyword;
     private final int LOGIN_ACTIVITY = 0;
     private String id = "";
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        groupstudyroomButton = (Button)findViewById(R.id.groupstudyroom_button);
+        groupstudyroomButton = (ImageView)findViewById(R.id.groupstudyroom_button);
         groupstudyroomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

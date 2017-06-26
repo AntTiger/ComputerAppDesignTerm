@@ -209,13 +209,14 @@ public class HopeSearchActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             HttpURLConnection conn = null;
             try {
-                URL url = new URL("http://110.46.227.154/registerHopeDirect.php"); //요청 URL을 입력
+                URL url = new URL("http://"+ServerIpData.serverIp+"/registerHopeDirect.php"); //요청 URL을 입력
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
 
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                conn.setConnectTimeout(60);
+                conn.setReadTimeout(5000);
+                conn.setConnectTimeout(5000);
 
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8")); //캐릭터셋 설정

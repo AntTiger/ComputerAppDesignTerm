@@ -149,7 +149,7 @@ public class HopeBookActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             try {
 
-                URL url = new URL("http://110.46.227.154/getHopeList.php?id="+URLEncoder.encode(new String(userID.getBytes("UTF-8"))));
+                URL url = new URL("http://"+ServerIpData.serverIp+"/getHopeList.php?id="+URLEncoder.encode(new String(userID.getBytes("UTF-8"))));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
