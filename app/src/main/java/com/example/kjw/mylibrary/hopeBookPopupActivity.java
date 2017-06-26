@@ -36,17 +36,6 @@ public class hopeBookPopupActivity extends AppCompatActivity {
             }
         });
 
-        TextView searchText = (TextView) findViewById(R.id.popupBtSearchRegister);
-        searchText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("result","search");
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-        });
-
         TextView popupTitle = (TextView) findViewById(R.id.popUpTitle);
         popupTitle.setBackgroundColor(Color.parseColor("#2337DE"));
         editText = (EditText) findViewById(R.id.hopeSearchKeyword);
