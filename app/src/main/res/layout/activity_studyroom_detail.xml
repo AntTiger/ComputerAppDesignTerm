@@ -12,7 +12,8 @@
         android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="4">
+        android:columnCount="4"
+        android:id="@+id/gridLayout">
 
         <TextView
             android:id="@+id/seat1"
@@ -228,4 +229,13 @@
             android:textSize="20sp"
             android:background="@drawable/back"/>
     </GridLayout>
+
+    <TextView
+        android:id="@+id/roomname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="23dp"
+        android:text="roomname"
+        android:textSize="25sp" />
 </RelativeLayout>

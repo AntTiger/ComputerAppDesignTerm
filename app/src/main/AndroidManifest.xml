@@ -71,8 +71,10 @@
             android:name=".ReservedBookDetailActivity"
             android:label="@string/title_activity_reserved_book_detail"
             android:screenOrientation="portrait" />
-        <activity android:name=".StudyroomActivity" />
-        <activity android:name=".StudyroomDetailActivity"></activity>
+        <activity android:name=".StudyroomActivity"
+            android:label="열람실 조회" />
+        <activity android:name=".StudyroomDetailActivity"
+            android:label="열람실 조회"/>
     </application>
 
 </manifest>
