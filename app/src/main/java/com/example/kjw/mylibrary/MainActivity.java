@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView bookSearchButton;
     private ImageView loginButton;
     private ImageView hopeBookButton;
+    private ImageView studyroomButton;
 
     private TextView loginButtonText;
 
@@ -111,12 +112,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        studyroomButton=(ImageView)findViewById(R.id.studyroom_button);
+        studyroomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,StudyroomActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         groupstudyroomButton = (Button)findViewById(R.id.groupstudyroom_button);
         groupstudyroomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GroupstudyroomActivity.class);
+                intent.putExtra("permission",permission );
                 startActivity(intent);
             }
         });
