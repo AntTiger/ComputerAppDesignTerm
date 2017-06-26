@@ -73,12 +73,14 @@ public class BookDetailActivity extends AppCompatActivity {
     private static final String TAG_ASSIGNEDNUMBER= "ASSIGNEDNUMBER";
     private static final String TAG_POSSESSIONALCATION= "POSSESSIONALCATION";
     private static final String TAG_RESERVATIONRESULT= "result";
+    private static final String TAG_ORDER= "order";
 
     private String id = "";
 
     ArrayList<myItems> items;
 
     private int reservationResult = 0;
+    private int order = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,7 +280,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 }
 
                 else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "예약 성공", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), order + "번째로 예약 성공", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -350,6 +352,7 @@ public class BookDetailActivity extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
                 reservationResult = item.getInt(TAG_RESERVATIONRESULT);
+                order = item.getInt(TAG_ORDER);
             }
 
         } catch (JSONException e) {
