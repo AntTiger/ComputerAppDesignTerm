@@ -209,7 +209,7 @@ public class HopeSearchActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             HttpURLConnection conn = null;
             try {
-                URL url = new URL("http://110.46.227.154/registerHopeDirect.php"); //요청 URL을 입력
+                URL url = new URL("http://"+ServerIpData.serverIp+"/registerHopeDirect.php"); //요청 URL을 입력
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
 

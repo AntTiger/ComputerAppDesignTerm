@@ -5,5 +5,5 @@ package com.example.kjw.mylibrary;
  */
 
 public class ServerIpData {
-    public static final String serverIp = "110.46.227.154";
+    public static final String serverIp = "172.21.179.235";
 }
