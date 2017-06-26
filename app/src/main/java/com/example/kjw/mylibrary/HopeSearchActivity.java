@@ -40,6 +40,8 @@ public class HopeSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("인터파크 검색 결과");
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("id");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hope_search);
         listView = (ListView) findViewById(R.id.hopeSearchList);
@@ -72,7 +74,6 @@ public class HopeSearchActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
         String keyword = intent.getStringExtra("keyword");
         MyGetSearchListTask task = new MyGetSearchListTask();
         task.execute(keyword);
