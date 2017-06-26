@@ -18,10 +18,15 @@ public class GroupstudyroomActivity extends AppCompatActivity{
     private Button gsr42Button;
     private Button gsr43Button;
 
+    private int permission;
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groupstudyroom);
+
+        Intent intent = getIntent();
+        permission = intent.getIntExtra("permission", PermissionData.notUser);
 
         gsr31Button = (Button)findViewById(R.id.gsr31_button);
         gsr31Button.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +34,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",31);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });
@@ -38,6 +44,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",32);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });
@@ -47,6 +54,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",33);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });
@@ -56,6 +64,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",41);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });
@@ -65,6 +74,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",42);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });
@@ -74,6 +84,7 @@ public class GroupstudyroomActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(GroupstudyroomActivity.this, ReservedGsrActivity.class);
                 intent.putExtra("room",43);
+                intent.putExtra("permission",permission);
                 startActivity(intent);
             }
         });

@@ -23,32 +23,31 @@
         <activity
             android:name=".BookSearchActivity"
             android:label="@string/title_activity_book_search"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyLibraryManagementActivity"
             android:label="@string/title_activity_my_library_management"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-        android:name=".BookManagementActivity"
-        android:label="도서 관리"
-        android:screenOrientation="portrait"/>
+            android:name=".BookManagementActivity"
+            android:label="도서 관리"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RentedBookActivity"
             android:label="@string/title_activity_rented_book"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ReservedBookActivity"
             android:label="@string/title_activity_reserved_book"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GroupstudyroomActivity"
             android:label="그룹스터디룸 예약" />
-
         <activity
             android:name=".BookDetailActivity"
             android:label="@string/title_activity_book_detail"
@@ -58,20 +57,22 @@
             android:name=".hopeBookPopupActivity"
             android:theme="@style/myPopupDialog" />
         <activity android:name=".HopeBook_DirectActivity" />
-        <activity android:name=".HopeSearchActivity"></activity>
+        <activity android:name=".HopeSearchActivity" />
         <activity
             android:name=".ReservedGsrActivity"
             android:label="그룹스터디룸 예약"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RentedBookDetailActivity"
             android:label="@string/title_activity_rented_book_detail"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ReservedBookDetailActivity"
             android:label="@string/title_activity_reserved_book_detail"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".StudyroomActivity" />
+        <activity android:name=".StudyroomDetailActivity"></activity>
     </application>
 
 </manifest>

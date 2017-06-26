@@ -80,6 +80,8 @@ public class ReservedGsrActivity extends AppCompatActivity {
     private int idchk;
     private int confirmid;
 
+    private int permission;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,13 @@ public class ReservedGsrActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         roomNum = intent.getIntExtra("room", 1);
+        permission=intent.getIntExtra("permission", PermissionData.notUser);
+        if (permission == PermissionData.notUser) {
+            Toast toast = Toast.makeText(ReservedGsrActivity.this, "로그인 후 이용해주세요", Toast.LENGTH_SHORT);
+            toast.show();
+            finish();
+        }
+
         // 날짜
         date1 = (TextView) findViewById(R.id.date1);
         date2 = (TextView) findViewById(R.id.date2);
@@ -471,7 +480,7 @@ public class ReservedGsrActivity extends AppCompatActivity {
             String reservationdate = (String) params[1];
             String reservationtime = (String) params[2];
 
-            String serverURL = "http://110.46.227.154/set_reserved_gsr.php";
+            String serverURL = "http://"+ServerIpData.serverIp+"/set_reserved_gsr.php";
             String postParameters = "groupstudyroomnumber=" + groupstudyroomnumber + "&reservationdate=" + reservationdate+"&reservationtime=" + reservationtime;
 
 
@@ -566,7 +575,7 @@ public class ReservedGsrActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String serverURL = "http://110.46.227.154/get_reserved_gsr.php";
+            String serverURL = "http://"+ServerIpData.serverIp+"/get_reserved_gsr.php";
             String groupstudyroomnumber = (String)params[0];
             String reservationdate = (String)params[1];
 
@@ -715,7 +724,7 @@ public class ReservedGsrActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String serverURL = "http://110.46.227.154/get_id.php";
+            String serverURL = "http://"+ServerIpData.serverIp+"/get_id.php";
             String idKeyword = (String)params[0];
 
             String postParameters = "id=" + idKeyword;
