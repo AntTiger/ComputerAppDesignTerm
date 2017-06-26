@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 import java.lang.String;
 
 public class MainActivity extends AppCompatActivity {
-    private Button bookManagementCallButton;
+    private ImageView bookManagementCallButton;
     private ImageView myLibraryCallButton;
     private ImageView bookSearchButton;
     private ImageView loginButton;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bookManagementCallButton = (Button)findViewById(R.id.book_management_button);
+        bookManagementCallButton = (ImageView)findViewById(R.id.book_management_button);
         bookManagementCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
